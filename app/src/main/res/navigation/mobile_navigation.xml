@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.mobile.inter_im.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.mobile.inter_im.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_profil"
-        android:name="com.mobile.inter_im.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.mobile.inter_im.ui.profil.ProfilFragment"
+        android:label="@string/title_profil"
+        tools:layout="@layout/fragment_profil" />
 </navigation>

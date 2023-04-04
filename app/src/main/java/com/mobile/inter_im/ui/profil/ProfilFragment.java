@@ -1,29 +1,31 @@
-package com.mobile.inter_im.ui.dashboard;
+package com.mobile.inter_im.ui.profil;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.mobile.inter_im.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+import com.mobile.inter_im.databinding.FragmentProfilBinding;
 
-private FragmentDashboardBinding binding;
+public class ProfilFragment extends Fragment {
+
+private FragmentProfilBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        ProfilViewModel profilViewModel =
+                new ViewModelProvider(this).get(ProfilViewModel.class);
 
-    binding = FragmentDashboardBinding.inflate(inflater, container, false);
+    binding = FragmentProfilBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textProfil;
+        profilViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
