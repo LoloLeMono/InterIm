@@ -2,9 +2,9 @@
 
 **Présentation du projet** 
 
-Ce projet consiste à développer une application mobile pour la gestion des offres et candidatures pour le travail en intérim.  ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.001.png)
+Ce projet consiste à développer une application mobile pour la gestion des offres et candidatures pour le travail en intérim.  ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.001.png)
 
-![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.002.png)![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.003.png). 
+![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.002.png)![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.003.png). 
 
 Cette application gère les utilisateurs suivants :  
 
@@ -15,7 +15,7 @@ Cette application gère les utilisateurs suivants :
 1) **Gestionnaire :** Ce sont les utilisateurs qui se sont inscrits pour bénéficier des services de l’application destinés aux gestionnaires. 
 1) **Super-Gestionnaire  :**  Ce  sont  des  gestionnaires  qui  bénéficient  des  services supplémentaires. 
 
-**Services offerts aux utilisateurs anonymes :  ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
+**Services offerts aux utilisateurs anonymes :  ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
 
 - Affichage d’annonces/offres :  
 - Pour la première utilisation, l’application demande à l’utilisateur d’accepter la localisation en lui expliquant que la raison est pour afficher des annonces autour de sa localisation. 
@@ -51,7 +51,7 @@ Les informations à renseigner pour s’inscrire en tant que chercheur d’emplo
 
 L’application doit envoyer un code à l’utilisateur (sur son numéro de téléphone ou sur son adresse mail) qui sera utilisé par l’utilisateur pour confirmer son inscription sur une interface de validation.   
 
-**Services offerts aux utilisateurs inscrits comme chercheurs d’emplois d’intérim  ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.005.png)**
+**Services offerts aux utilisateurs inscrits comme chercheurs d’emplois d’intérim  ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.005.png)**
 
 **Ces utilisateurs bénéficient des services suivants, en plus de tous les services offerts aux utilisateurs anonymes (sauf l’inscription) :**  
 
@@ -125,7 +125,7 @@ nombre de services :
 - Gestion des langues : il s’agit d’un service de traduction  
 - Traduire le texte d’une offre  
 
-**Services offerts aux utilisateurs  3-Employeur :  ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
+**Services offerts aux utilisateurs  3-Employeur :  ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
 
 - Pour la première utilisation, l’application présente des slides d’explication des services offerts par l’application pour les employeurs.  
 - Proposition  d’une  interface  de  connexion  ou  d’inscription  (se  connecter  ou  de s’inscrire).  
@@ -192,14 +192,14 @@ nombre de services :
 - Par SMS  
 - Etc.  
 
-**Utilisateur4-Agence intérim ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
+**Utilisateur4-Agence intérim ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
 
 - Les mêmes services offerts aux employeurs. 
 - Déposer des offres. Il s’agit de la possibilité offerte à une agence pour déposer plusieurs offres en même temps. Ces offres ne sont pas saisies mais déposées sous forme de fichiers.  
 - Configurer une URI (API endPoint) pour pouvoir récupérer des propositions d’offres en interaction B2B via un web service (Rest, GRPC, etc.) 
 - Configurer l’URL du site web de l’agence.  
 
-**Utilisateur5 – Gestionnaire ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
+**Utilisateur5 – Gestionnaire ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)**
 
 - Consulter les inscriptions des employeurs et des agences. 
 - Traiter les inscriptions des employeurs et des agences : Valider, refuser, demande de complément d’information, contacter, etc.  
@@ -225,7 +225,7 @@ Exigences non fonctionnelles :
 
 **Taille du groupe**  
 
-1 à 3 étudiants.  ![](Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)Dates Importantes :  
+1 à 3 étudiants.  ![](img/Aspose.Words.f5f13b49-1347-4a34-894b-f092a053e14a.004.png)Dates Importantes :  
 
 21 mars 2023 
 
