@@ -22,7 +22,7 @@ private FragmentHomeBinding binding;
     binding = FragmentHomeBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        final TextView textView = binding.textHomeTitle;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

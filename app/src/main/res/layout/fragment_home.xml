@@ -7,21 +7,115 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment" >
 
-
-    <TextView
-        android:id="@+id/text_home"
-
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="match_parent">
 
-        android:textSize="40sp"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="?android:attr/textColorPrimary"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="?attr/colorPrimaryContainer">
 
-        app:layout_constraintEnd_toEndOf='parent'
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+            <!-- Vos TextViews ou autres vues ici -->
+            <TextView
+                android:id="@+id/text_home_title"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+
+                android:text="Découvrez votre futur job !"
+                android:textSize="40sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="?android:attr/textColorPrimary"
+
+                app:layout_constraintEnd_toEndOf='parent'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/text_home_content"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+
+                android:textSize="20sp"
+                android:text="@string/text_home_intro"
+                android:textColor="?android:attr/textColorPrimary"
+
+                app:layout_constraintEnd_toEndOf='parent'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+
+                android:textSize="20sp"
+                android:text="95% des intérimaires se déclarent satisfaits des misions proposées"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="?android:attr/textColorPrimary"
+
+                app:layout_constraintEnd_toEndOf='parent'
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="300dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textField"
+                        android:layout_width="match_parent"
+
+                        android:layout_marginBottom="20dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Mots clé ...">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textField2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ville, département">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/filledButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="right"
+                        android:text="Trouver des offres" />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

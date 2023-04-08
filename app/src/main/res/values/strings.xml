@@ -4,4 +4,5 @@
     <string name="title_search">Search</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profil">Profil</string>
+    <string name="text_home_intro">40448 offres d\'emploi disponibles en <b>CDD</b></string>
 </resources>
