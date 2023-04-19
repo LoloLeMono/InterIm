@@ -24,8 +24,8 @@ private FragmentProfilBinding binding;
     binding = FragmentProfilBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textProfil;
-        profilViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        /*final TextView textView = binding.textProfil;
+        profilViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);*/
         return root;
     }
 

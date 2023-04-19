@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.mobile.inter_im.app-mergeDebugResources-42:/layout/activity_main.xml",
+        "source": "com.mobile.inter_im.app-main-45:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-mergeDebugResources-42:/layout/fragment_search.xml",
+        "source": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-main-45:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-mergeDebugResources-42:/layout/fragment_home.xml",
+        "source": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-main-45:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-mergeDebugResources-42:/layout/fragment_profil.xml",
+        "source": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-main-45:/layout/fragment_profil.xml"
+    },
+    {
+        "merged": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-mergeDebugResources-42:/layout/fragment_notifications.xml",
+        "source": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-main-45:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-mergeDebugResources-42:/layout/activity_main.xml",
+        "source": "/Users/lololemono/.gradle/daemon/7.5/com.mobile.inter_im.app-main-45:/layout/activity_main.xml"
+    }
+]
