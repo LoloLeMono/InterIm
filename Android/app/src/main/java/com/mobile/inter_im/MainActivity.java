@@ -43,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
 
         MaterialToolbar bar = findViewById(R.id.topAppBar);
 
+        /*
+        // Configurez la topappbar
+        setSupportActionBar(bar);
+
+        // Désactivation de l'affichage du titre
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // Activation de l'affichage du logo
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        // Définition du logo
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        */
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://reqres.in")
                 .addConverterFactory(GsonConverterFactory.create())

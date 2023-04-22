@@ -29,9 +29,31 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?android:attr/windowBackground"
-        app:title="@string/app_name"
-        app:titleCentered = 'true'
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:paddingVertical="15dp"
+                android:layout_gravity="center"
+                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/app_name"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="30dp"/>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
