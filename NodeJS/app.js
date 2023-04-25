@@ -55,6 +55,12 @@ mongoClient.connect(url, (err, db)=> {
                 }
             })
         })
+
+        app.get("/users", async (req, res) => {
+            console.log("/users");
+            let documents = await db.collection("test").find().toArray();
+            res.json(documents);
+        });
     }
 })
 app.listen(3000, () => {
