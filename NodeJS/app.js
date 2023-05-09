@@ -1,68 +1,54 @@
-const express = require('express')
-const app = express()
-const mongoClient = require('mongodb').MongoClient
+const { json } = require("express");
+var express = require("express");
+var app = express();
+app.use(express.json());
+var MongoClient = require("mongodb").MongoClient;
+var url = "mongodb://localhost:27017";
+const port = 3000;
+app.listen(port);
+console.log("Serveur écoute sur le port "+port);
 
+const client = new MongoClient(url);
+const { ObjectId } = require('mongodb');
 
-const url = "mongodb://localhost:27017" // default port
+async function main() //principe de promesse
+{
+	client.connect()
+    .then( //apeller apres la réponse du serveur
+        client => { return client.db("DATABASE"); } //client = objet js qui correpond à la base de donnée
+    )
+	// Affichage des collection de la db
+    .then(async (db) => {
+		console.log("Liste des collections :");
+		let collections = await db.listCollections().toArray();
+		for (let collection of collections) {
+			console.log(collection.name);
+		}
+		return db;
+	})
+	.then((db) => {
+		
+        // RETOURNE LA LISTE DES UTILISATEURS
+		app.get("/users", async (req, res) => {
+			console.log("/users");
+			let documents = await db.collection("users")
+							.find()
+							.toArray();
+			res.json(documents);
+		});
 
-app.use(express.json())
-
-mongoClient.connect(url, (err, db)=> {
-    if (err) {
-        console.log("Error while conecting mongo Client")
-    } else {
-        const myDb = db.db('myDb')
-        const collection = myDb.collection('myTable')
-
-        app.post('/signup',(req, res) => {
-
-            const newUser = {
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            }
-            
-            const query = { email: newUser.email }
-            collection.findOne(query, (err, result) => {
-                if (result = null) {
-                    collection.insertOne(newUser, (err, result) => {
-                        res.status(200).send()
-                    })
-                } else {
-                    res.status(400).send()
-                }
-            })
-        })
-
-        app.post('/login', (req, res) => {
-
-            const query = {
-                email: req.body.email,
-                password: req.body.password
-            }
-            
-            collection.findOne(query, (err, result) => {
-                if (result != null) {
-
-                    const objToSend = {
-                        name: result.name,
-                        email: result.email
-                    }
-
-                    res.status(200).send(JSON.stringify(objToSend))
-                } else {
-                    res.status(404).send()
-                }
-            })
-        })
-
-        app.get("/users", async (req, res) => {
-            console.log("/users");
-            let documents = await db.collection("test").find().toArray();
-            res.json(documents);
+        //AJOUTER UN UTILISATEUR
+        app.post("/inscription", async (req, res) => {
+			console.log("/inscription");
+            let document = await db.collection("users").find(req.body).toArray();
+			if( document.length == 1){
+				res.json({"resultat" : 0, "message": "L'utilisateur existe déjà"});
+			}
+			else{
+				await db.collection("users").insertOne(req.body);
+				res.json({"resultat" : 1, "message": "Nouvel utilsateur ajouté !"});
+			}
         });
-    }
-})
-app.listen(3000, () => {
-    console.log("Listening on port 3000...")
-})
+    });
+}
+main();
