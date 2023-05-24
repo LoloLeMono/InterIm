@@ -1,16 +1,21 @@
 package com.mobile.inter_im;
 
+import com.mobile.inter_im.model.ResultData;
+import com.mobile.inter_im.model.UserData;
+
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
-
+    @GET("/users")
+    Call<List<UserData>> getUsers();
     @POST("/login")
-    Call<LoginResult> executeLogin(@Body HashMap<String, String> map);
-
+    Call<ResultData> executeLogin(@Body UserData user);
     @POST("signup")
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 }

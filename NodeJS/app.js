@@ -37,8 +37,21 @@ async function main() //principe de promesse
 			res.json(documents);
 		});
 
+        //VERIFIE UN UTILISATEUR
+        app.post("/login", async (req, res) => {
+			console.log("/login");
+            let document = await db.collection("users").find(req.body).toArray();
+			if( document.length == 1){
+				res.json({"resultat" : 0, "message": "Utilisateur trouvé !"});
+			}
+			else{
+				res.json({"resultat" : 1, "message": "Utilisateur inconnu"});
+				console.log(req.body);
+			}
+        });
+
         //AJOUTER UN UTILISATEUR
-        app.post("/inscription", async (req, res) => {
+        app.post("/signup", async (req, res) => {
 			console.log("/inscription");
             let document = await db.collection("users").find(req.body).toArray();
 			if( document.length == 1){

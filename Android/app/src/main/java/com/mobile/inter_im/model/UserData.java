@@ -1,85 +1,207 @@
 package com.mobile.inter_im.model;
 
+import java.util.List;
+
 public class UserData {
-    DataClass data;
-    SupportClass support;
+    String _id, nom, premon, mdp, mail, tel, nat, type, adresse, ville, bio, cv, vitale;
+    Boolean notif;
+    Integer abo;
+    List<String> autredoc, emplois;
 
-    public DataClass getData() {
-        return data;
+    public UserData(String mail, String mdp)
+    {
+        this.mail = mail;
+        this.mdp = mdp;
     }
 
-    public void setData(DataClass data) {
-        this.data = data;
+    public UserData(String _id, String nom, String premon, String mdp, String mail, String tel, String nat, String type, String adresse, String ville, String bio, String cv, String vitale, Boolean notif, Integer abo, List<String> autredoc, List<String> emplois)
+    {
+        this._id = _id;
+        this.nom = nom;
+        this.premon = premon;
+        this.mdp = mdp;
+        this.mail = mail;
+        this.tel = tel;
+        this.nat = nat;
+        this.type = type;
+        this.adresse = adresse;
+        this.ville = ville;
+        this.bio = bio;
+        this.cv = cv;
+        this.vitale = vitale;
+        this.notif = notif;
+        this.abo = abo;
+        this.autredoc = autredoc;
+        this.emplois = emplois;
     }
 
-    public SupportClass getSupport() {
-        return support;
+    public String get_id()
+    {
+        return _id;
     }
 
-    public void setSupport(SupportClass support) {
-        this.support = support;
+    public void set_id(String _id)
+    {
+        this._id = _id;
     }
 
-    public class DataClass{
-        String first_name, last_name, id, email, avatar;
-
-        public String getFirst_name() {
-            return first_name;
-        }
-
-        public void setFirst_name(String first_name) {
-            this.first_name = first_name;
-        }
-
-        public String getLast_name() {
-            return last_name;
-        }
-
-        public void setLast_name(String last_name) {
-            this.last_name = last_name;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getAvatar() {
-            return avatar;
-        }
-
-        public void setAvatar(String avatar) {
-            this.avatar = avatar;
-        }
+    public String getNom()
+    {
+        return nom;
     }
-    class SupportClass{
-        String url, text;
 
-        public String getUrl() {
-            return url;
-        }
+    public void setNom(String nom)
+    {
+        this.nom = nom;
+    }
 
-        public void setUrl(String url) {
-            this.url = url;
-        }
+    public String getPremon()
+    {
+        return premon;
+    }
 
-        public String getText() {
-            return text;
-        }
+    public void setPremon(String premon)
+    {
+        this.premon = premon;
+    }
 
-        public void setText(String text) {
-            this.text = text;
-        }
+    public String getMdp()
+    {
+        return mdp;
+    }
+
+    public void setMdp(String mdp)
+    {
+        this.mdp = mdp;
+    }
+
+    public String getMail()
+    {
+        return mail;
+    }
+
+    public void setMail(String mail)
+    {
+        this.mail = mail;
+    }
+
+    public String getTel()
+    {
+        return tel;
+    }
+
+    public void setTel(String tel)
+    {
+        this.tel = tel;
+    }
+
+    public String getNat()
+    {
+        return nat;
+    }
+
+    public void setNat(String nat)
+    {
+        this.nat = nat;
+    }
+
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    public String getAdresse()
+    {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse)
+    {
+        this.adresse = adresse;
+    }
+
+    public String getVille()
+    {
+        return ville;
+    }
+
+    public void setVille(String ville)
+    {
+        this.ville = ville;
+    }
+
+    public String getBio()
+    {
+        return bio;
+    }
+
+    public void setBio(String bio)
+    {
+        this.bio = bio;
+    }
+
+    public String getCv()
+    {
+        return cv;
+    }
+
+    public void setCv(String cv)
+    {
+        this.cv = cv;
+    }
+
+    public String getVitale()
+    {
+        return vitale;
+    }
+
+    public void setVitale(String vitale)
+    {
+        this.vitale = vitale;
+    }
+
+    public Boolean getNotif()
+    {
+        return notif;
+    }
+
+    public void setNotif(Boolean notif)
+    {
+        this.notif = notif;
+    }
+
+    public Integer getAbo()
+    {
+        return abo;
+    }
+
+    public void setAbo(Integer abo)
+    {
+        this.abo = abo;
+    }
+
+    public List<String> getAutredoc()
+    {
+        return autredoc;
+    }
+
+    public void setAutredoc(List<String> autredoc)
+    {
+        this.autredoc = autredoc;
+    }
+
+    public List<String> getEmplois()
+    {
+        return emplois;
+    }
+
+    public void setEmplois(List<String> emplois)
+    {
+        this.emplois = emplois;
     }
 }
