@@ -1,5 +1,6 @@
 package com.mobile.inter_im;
 
+import com.mobile.inter_im.model.SendOfferData;
 import com.mobile.inter_im.model.ResultData;
 import com.mobile.inter_im.model.UserData;
 
@@ -16,6 +17,8 @@ public interface RetrofitInterface {
     Call<List<UserData>> getUsers();
     @POST("/login")
     Call<ResultData> executeLogin(@Body UserData user);
+    @POST("/find-offers")
+    Call<List<SendOfferData>> executeOffer(@Body SendOfferData offer);
     @POST("signup")
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 }

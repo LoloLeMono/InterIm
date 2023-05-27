@@ -28,4 +28,21 @@
         android:name="com.mobile.inter_im.ui.profil.ProfilFragment"
         android:label="@string/title_profil"
         tools:layout="@layout/fragment_profil" />
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.mobile.inter_im.ui.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/navigation_displayOffers"
+        android:name="com.mobile.inter_im.ui.displayOffers.DisplayOffersFragment"
+        android:label="DisplayOffers"
+        tools:layout="@layout/fragment_display_offers">
+        <argument
+            android:name="offersListJson"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

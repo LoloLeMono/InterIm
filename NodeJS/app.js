@@ -62,6 +62,18 @@ async function main() //principe de promesse
 				res.json({"resultat" : 1, "message": "Nouvel utilsateur ajouté !"});
 			}
         });
+
+		// RETOURNE UNE LISTE D'OFFRES SUIVANTS DES CRITERES
+		app.post("/find-offers", async (req, res) => {
+			console.log("/find-offers");
+            let offers = await db.collection("offers").find(req.body).toArray();
+			if( offers.length > 0){
+				res.json(offers);
+			}
+			else{
+				res.json(null);
+			}
+		});
     });
 }
 main();

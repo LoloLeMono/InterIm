@@ -1,39 +1,27 @@
 package com.mobile.inter_im;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.webkit.GeolocationPermissions;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import android.content.SharedPreferences;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.inter_im.databinding.ActivityMainBinding;
-import com.mobile.inter_im.model.UserData;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+import com.mobile.inter_im.ui.home.HomeFragment;
+import com.mobile.inter_im.ui.login.LoginFragment;
+import com.mobile.inter_im.ui.notifications.NotificationsFragment;
+import com.mobile.inter_im.ui.profil.ProfilFragment;
+import com.mobile.inter_im.ui.search.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    interface RequestUser{
-        @GET("/api/users/{uid}")
-        Call<UserData> getUser(@Path("uid") String uid);
-    }
-
-    private ActivityMainBinding binding;
-    public NavController navController;
+    //public NavController navController;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,52 +29,58 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
 
         MaterialToolbar bar = findViewById(R.id.topAppBar);
-
-        /*
-        // Configurez la topappbar
         setSupportActionBar(bar);
 
-        // Désactivation de l'affichage du titre
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putBoolean("isConnected", false).apply();
 
-        // Activation de l'affichage du logo
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        boolean isConnected = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE).getBoolean("isConnected", false); // Récupérez la valeur de isConnected depuis les SharedPreferences
+        System.out.println("isConnected = "+isConnected);
 
-        // Définition du logo
-        getSupportActionBar().setLogo(R.drawable.ic_launcher);
-        */
+        // BottomNavigationView navView = findViewById(R.id.nav_view);
+        // BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
+        // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://reqres.in")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        RequestUser requestUser = retrofit.create(RequestUser.class);
-        requestUser.getUser("3").enqueue(new Callback<UserData>()
+        binding.navView.setOnItemSelectedListener(item ->
         {
-            @Override
-            public void onResponse(Call<UserData> call, Response<UserData> response)
-            {
-                //bar.setTitle(((UserData.DataClass) response.body().getData()).getFirst_name());
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    replaceFragment(new HomeFragment());
+                    break;
+                case R.id.navigation_search:
+                    replaceFragment(new SearchFragment());
+                    break;
+                case R.id.navigation_notifications:
+                    replaceFragment(new NotificationsFragment());
+                    break;
+                case R.id.navigation_profil:
+                    if (isConnected) {
+                        replaceFragment(new ProfilFragment());
+                    } else {
+                        replaceFragment(new LoginFragment());
+                    }
+                    break;
             }
-
-            @Override
-            public void onFailure(Call<UserData> call, Throwable t)
-            {
-                //bar.setTitle(t.getMessage());
-            }
+            return true;
         });
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_search, R.id.navigation_notifications, R.id.navigation_profil).build();
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+
+
+
+        // AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_search, R.id.navigation_notifications, R.id.navigation_profil).build();
+        // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        //NavigationUI.setupWithNavController(binding.navView, navController);
+    }
+
+    private void replaceFragment (Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, fragment);
+        fragmentTransaction.commit();
     }
 
 }

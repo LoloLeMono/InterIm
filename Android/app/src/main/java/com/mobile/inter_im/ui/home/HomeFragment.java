@@ -1,5 +1,7 @@
 package com.mobile.inter_im.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,8 @@ private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel.setContext(requireContext());
 
     binding = FragmentHomeBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
@@ -27,7 +29,7 @@ private FragmentHomeBinding binding;
         return root;
     }
 
-@Override
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;

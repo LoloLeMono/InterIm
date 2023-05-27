@@ -4,7 +4,33 @@
     <string name="title_search">Search</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profil">Profil</string>
+    <string name="title_login">Login</string>
     <string name="text_home_intro">40448 offres d\'emploi disponibles en <b>CDD</b></string>
 
     <string name="testAPI">testAPI</string>
+
+    <string-array name="sub_items">
+        <item>Aucun</item>
+        <item>Mensuel</item>
+        <item>Trimestriel</item>
+        <item>Annuel</item>
+        <item>Definitif</item>
+    </string-array>
+
+    <string-array name="secteur_items">
+        <item>Animation</item>
+        <item>Assurance</item>
+        <item>Banque</item>
+        <item>BTP</item>
+        <item>Commerce</item>
+        <item>Distribution</item>
+        <item>Hôtellerie</item>
+        <item>Informatique</item>
+        <item>Logistique</item>
+        <item>Restauration</item>
+        <item>Sport</item>
+        <item>Télécoms</item>
+        <item>Transport</item>
+        <item>Autre</item>
+    </string-array>
 </resources>

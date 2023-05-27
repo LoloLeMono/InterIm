@@ -3,40 +3,44 @@
     "nom": "Serveur",
     "etat": "60a463dc41e08f002150ec19",
     "duree": 30,
-    "filtres": ["restauration"],
+    "secteur": "restauration",
     "descr": "Nous recherchons un serveur pour travailler dans notre restaurant. Le poste est à pourvoir immédiatement pour une durée de 1 mois. Le candidat doit être motivé et dynamique.",
     "salaire": 10,
     "date": 20230701,
-    "candidatures": []
+    "candidatures": [],
+    "ville": "Montpellier"
   },
   {
     "nom": "Plongeur",
     "etat": "",
     "duree": 31,
-    "filtres": ["restauration"],
+    "secteur": "restauration",
     "descr": "Nous cherchons un plongeur pour notre restaurant. Le travail consiste à nettoyer la vaisselle et les ustensiles de cuisine. Le poste est à pourvoir pour une durée d'un mois.",
     "salaire": 9.5,
     "date": 20230715,
-    "candidatures": []
+    "candidatures": [],
+    "ville": "Montpellier"
   },
   {
     "nom": "Réceptionniste",
     "etat": "",
     "duree": 20,
-    "filtres": ["hotellerie"],
+    "secteur": "hotellerie",
     "descr": "Nous cherchons une personne pour travailler à la réception de notre hôtel. Le poste est déjà en cours et se terminera dans 20 jours. Le candidat doit être souriant et dynamique.",
     "salaire": 11,
     "date": 20230725,
-    "candidatures": ["id1"]
+    "candidatures": ["id1"],
+    "ville": "Montpellier"
   },
   {
     "nom": "Cuisinier",
     "etat": "",
     "duree": 45,
-    "filtres": ["restauration"],
+    "secteur": "restauration",
     "descr": "Nous cherchons un cuisinier pour travailler dans notre restaurant. Le candidat doit être expérimenté et savoir travailler en équipe. Le poste est à pourvoir pour une durée de 45 jours.",
     "salaire": 13,
     "date": 20230730,
-    "candidatures": []
+    "candidatures": [],
+    "ville": "Montpellier"
   }
 ]
