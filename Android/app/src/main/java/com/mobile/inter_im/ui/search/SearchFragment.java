@@ -6,30 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.material.datepicker.CalendarConstraints;
-import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+import com.mobile.inter_im.MainActivity;
 import com.mobile.inter_im.R;
 import com.mobile.inter_im.databinding.FragmentSearchBinding;
-import com.mobile.inter_im.model.SendOfferData;
-import com.mobile.inter_im.ui.displayOffers.DisplayOffersFragment;
+import com.mobile.inter_im.model.OfferData;
 
-import java.io.Console;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class SearchFragment extends Fragment {
 
@@ -37,8 +28,8 @@ public class SearchFragment extends Fragment {
     private SearchViewModel searchViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        searchViewModel.setContext(requireContext());
+        MainActivity mainActivity = (MainActivity) requireActivity();
+        searchViewModel = new ViewModelProvider(mainActivity).get(SearchViewModel.class);
 
         // NavController navController = NavHostFragment.findNavController(this);
         binding = FragmentSearchBinding.inflate(inflater, container, false);
@@ -65,23 +56,20 @@ public class SearchFragment extends Fragment {
 
                 System.out.println("Début : "+parseDateDeb+", Ville : "+town+", Secteur : "+sector);
 
-                //searchViewModel.sendDatas(parseDateDeb, sector, town, navController);
+                searchViewModel.sendDatas(parseDateDeb, sector, town);
             }
         });
 
-        searchViewModel.getSendOfferDataList().observe(getViewLifecycleOwner(), new Observer<List<SendOfferData>>() {
+        searchViewModel.getSendOfferDataList().observe(getViewLifecycleOwner(), new Observer<List<OfferData>>() {
             @Override
-            public void onChanged(List<SendOfferData> sendOfferDataList) {
+            public void onChanged(List<OfferData> offerDataList) {
                 // Créer une instance du fragment de destination
                 Gson gson = new Gson();
-                String offersListJson = gson.toJson(sendOfferDataList);
-                Bundle args = new Bundle();
-                args.putString("offersListJson", offersListJson);
+                String offersListJson = gson.toJson(offerDataList);
+                System.out.println("Dans search = "+searchViewModel.getOffers());
 
-                DisplayOffersFragment fragment = new DisplayOffersFragment();
-                fragment.setArguments(args);
-                System.out.println("Dans search = "+fragment.getArguments().getString("offersListJson"));
-                // navController.navigate(R.id.navigation_displayOffers);
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragment(new DisplayOffersFragment());
             }
         });
 

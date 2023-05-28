@@ -1,5 +1,7 @@
 package com.mobile.inter_im.ui.profil;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,17 @@ public class ProfilFragment extends Fragment
     {
         binding = FragmentProfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+
+        binding.titleName.setText(sharedPreferences.getString("nom", "ERROR")+" "+sharedPreferences.getString("prenom", ""));
+        binding.textFieldPhone.getEditText().setText(sharedPreferences.getString("telephone", "ERROR"));
+        binding.textFieldNat.getEditText().setText(sharedPreferences.getString("nationalite", "ERROR"));
+        binding.textFieldAddr.getEditText().setText(sharedPreferences.getString("adresse", "ERROR"));
+        binding.textFieldTown.getEditText().setText(sharedPreferences.getString("ville", "ERROR"));
+        binding.textFieldBio.getEditText().setText(sharedPreferences.getString("bio", "ERROR"));
+        binding.textFieldType.getEditText().setText(sharedPreferences.getString("type", "ERROR"));
+        binding.textFieldSub.getEditText().setText(sharedPreferences.getString("abo", "ERROR"));
 
         return root;
     }

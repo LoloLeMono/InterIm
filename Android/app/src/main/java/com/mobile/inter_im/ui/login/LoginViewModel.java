@@ -8,11 +8,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.NavController;
 
+import com.mobile.inter_im.MainActivity;
 import com.mobile.inter_im.PasswordHasher;
 import com.mobile.inter_im.R;
 import com.mobile.inter_im.RetrofitInterface;
 import com.mobile.inter_im.model.ResultData;
 import com.mobile.inter_im.model.UserData;
+import com.mobile.inter_im.ui.home.HomeFragment;
 
 import java.util.List;
 
@@ -44,30 +46,28 @@ public class LoginViewModel extends ViewModel {
         retrofitInterface = retrofit.create(RetrofitInterface.class);
     }
 
-    public void verifyLogin(String mail, String mdp, NavController navController) {
+    public void verifyLogin(String mail, String mdp/*, NavController navController*/) {
 
         String mdpHashed = PasswordHasher.hashPassword(mdp);
         System.out.println(mdpHashed);
         UserData user = new UserData(mail, mdpHashed);
 
-        Call<ResultData> call = retrofitInterface.executeLogin(user);
-        call.enqueue(new Callback<ResultData>() {
+        Call<UserData> call = retrofitInterface.executeLogin(user);
+        call.enqueue(new Callback<UserData>() {
             @Override
-            public void onResponse(Call<ResultData> call, Response<ResultData> response) {
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
                 if (response.isSuccessful()) {
-                    ResultData result = response.body();
-                    if (result.getResultat() == 0) {
-                        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
-                        sharedPreferences.edit().putString("mail", mail).apply();
-                        sharedPreferences.edit().putBoolean("isConnected", true).apply();
+                    UserData result = response.body();
+                    if (result != null) {
+                        saveData(result);
+                        System.out.println("Nom = "+result.getNom());
+                        System.out.println("Prenom = "+result.getPrenom());
+
+                        System.out.println("UserPreferences mail = "+context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE).getString("mail", "Pas de valeurs"));
 
                         changeValSnackbar("Utilisateur trouvé");
-                        navController.navigate(R.id.navigation_home); // Naviguer vers le fragment d'accueil
-                        System.out.println("Mail = "+mail);
-                        System.out.println("UserPreferences mail = "+sharedPreferences.getString("mail", "Pas de valeurs"));
                     }
                     else {
-                        System.out.println("mdpHashed ="+mdpHashed);
                         changeValSnackbar("Mail ou mot de passe incorrect");
                     }
                 } else {
@@ -76,7 +76,7 @@ public class LoginViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ResultData> call, Throwable t) {
+            public void onFailure(Call<UserData> call, Throwable t) {
                 System.out.println("Erreur failure : " + t.getMessage());
             }
         });
@@ -95,5 +95,25 @@ public class LoginViewModel extends ViewModel {
     public LiveData<String> getSnackbarMessage()
     {
         return snackbarMessage;
+    }
+
+    private void saveData(UserData user){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+
+        sharedPreferences.edit().putString("mail", user.getMail()).apply();
+        sharedPreferences.edit().putString("prenom", user.getPrenom()).apply();
+        sharedPreferences.edit().putString("nom", user.getNom()).apply();
+        sharedPreferences.edit().putString("telephone", user.getTel()).apply();
+        sharedPreferences.edit().putString("adresse", user.getAdresse()).apply();
+        sharedPreferences.edit().putString("ville", user.getVille()).apply();
+        sharedPreferences.edit().putString("bio", user.getBio()).apply();
+        sharedPreferences.edit().putString("nationalite", user.getNat()).apply();
+        sharedPreferences.edit().putString("type", user.getType()).apply();
+
+        sharedPreferences.edit().putBoolean("notif", user.getNotif()).apply();
+        sharedPreferences.edit().putString("abo", user.getAbo()).apply();
+
+
+        sharedPreferences.edit().putBoolean("isConnected", true).apply();
     }
 }

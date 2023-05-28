@@ -37,23 +37,21 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isConnected", false).apply();
 
-        boolean isConnected = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE).getBoolean("isConnected", false); // Récupérez la valeur de isConnected depuis les SharedPreferences
-        System.out.println("isConnected = "+isConnected);
-
-        // BottomNavigationView navView = findViewById(R.id.nav_view);
-        // BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-        // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-
         binding.navView.setOnItemSelectedListener(item ->
         {
+            boolean isConnected = getSharedPreferences("UserPreferences", Context.MODE_PRIVATE).getBoolean("isConnected", false); // Récupérez la valeur de isConnected depuis les SharedPreferences
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    System.out.println("HOME");
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.navigation_search:
+                    System.out.println("SEARCH");
                     replaceFragment(new SearchFragment());
                     break;
                 case R.id.navigation_notifications:
+                    System.out.println("NOTIF");
                     replaceFragment(new NotificationsFragment());
                     break;
                 case R.id.navigation_profil:
@@ -66,17 +64,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-
-
-
-
-        // AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_search, R.id.navigation_notifications, R.id.navigation_profil).build();
-        // NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        //NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    private void replaceFragment (Fragment fragment){
+    public void replaceFragment (Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, fragment);

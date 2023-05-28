@@ -16,8 +16,10 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.mobile.inter_im.MainActivity;
 import com.mobile.inter_im.R;
 import com.mobile.inter_im.databinding.FragmentLoginBinding;
+import com.mobile.inter_im.ui.home.HomeFragment;
 import com.mobile.inter_im.user.UserViewModel;
 
 public class LoginFragment extends Fragment {
@@ -49,7 +51,7 @@ public class LoginFragment extends Fragment {
                 String mailText = mailEditLayout.getEditText().getText().toString();
                 String mdpText = mdpEditLayout.getEditText().getText().toString();
 
-                //loginViewModel.verifyLogin(mailText, mdpText, navController);
+                loginViewModel.verifyLogin(mailText, mdpText/*, navController*/);
             }
         });
 
@@ -57,6 +59,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onChanged(String message) {
                 Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show();
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragment(new HomeFragment());
             }
         });
 

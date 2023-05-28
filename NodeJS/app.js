@@ -37,15 +37,24 @@ async function main() //principe de promesse
 			res.json(documents);
 		});
 
+		// RETOURNE LA LISTE DES OFFRES
+		app.get("/offers", async (req, res) => {
+			console.log("/offers");
+			let documents = await db.collection("offers")
+							.find()
+							.toArray();
+			res.json(documents);
+		});
+
         //VERIFIE UN UTILISATEUR
         app.post("/login", async (req, res) => {
 			console.log("/login");
-            let document = await db.collection("users").find(req.body).toArray();
-			if( document.length == 1){
-				res.json({"resultat" : 0, "message": "Utilisateur trouvé !"});
+            let document = await db.collection("users").findOne(req.body);
+			if( document != null){
+				res.json(document);
 			}
 			else{
-				res.json({"resultat" : 1, "message": "Utilisateur inconnu"});
+				res.json(null);
 				console.log(req.body);
 			}
         });
@@ -66,14 +75,33 @@ async function main() //principe de promesse
 		// RETOURNE UNE LISTE D'OFFRES SUIVANTS DES CRITERES
 		app.post("/find-offers", async (req, res) => {
 			console.log("/find-offers");
-            let offers = await db.collection("offers").find(req.body).toArray();
-			if( offers.length > 0){
-				res.json(offers);
+		
+			const { date, secteur, ville } = req.body; // Extraire les arguments spécifiques du corps de la requête
+		
+			const query = {}; // Créer un objet vide pour la requête
+		
+			if (date) {
+				query.date = { $eq: date }; // Utiliser l'opérateur $eq pour comparer les dates égales
 			}
-			else{
+		
+			if (secteur) {
+				query.secteur = secteur; // Ajouter l'argument secteur à la requête si présent
+			}
+		
+			if (ville) {
+				query.ville = ville; // Ajouter l'argument ville à la requête si présent
+			}
+		
+			let offers = await db.collection("offers").find(query).toArray();
+		
+			if (offers.length > 0) {
+				res.json(offers);
+			} else {
 				res.json(null);
 			}
 		});
+		
+		
     });
 }
 main();

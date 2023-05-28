@@ -3,9 +3,8 @@ package com.mobile.inter_im.model;
 import java.util.List;
 
 public class UserData {
-    String _id, nom, premon, mdp, mail, tel, nat, type, adresse, ville, bio, cv, vitale;
+    String _id, nom, prenom, mdp, mail, tel, nat, type, adresse, ville, bio, cv, vitale, abo;
     Boolean notif;
-    Integer abo;
     List<String> autredoc, emplois;
 
     public UserData(String mail, String mdp)
@@ -14,11 +13,11 @@ public class UserData {
         this.mdp = mdp;
     }
 
-    public UserData(String _id, String nom, String premon, String mdp, String mail, String tel, String nat, String type, String adresse, String ville, String bio, String cv, String vitale, Boolean notif, Integer abo, List<String> autredoc, List<String> emplois)
+    public UserData(String _id, String nom, String prenom, String mdp, String mail, String tel, String nat, String type, String adresse, String ville, String bio, String cv, String vitale, Boolean notif, String abo, List<String> autredoc, List<String> emplois)
     {
         this._id = _id;
         this.nom = nom;
-        this.premon = premon;
+        this.prenom = prenom;
         this.mdp = mdp;
         this.mail = mail;
         this.tel = tel;
@@ -55,14 +54,14 @@ public class UserData {
         this.nom = nom;
     }
 
-    public String getPremon()
+    public String getPrenom()
     {
-        return premon;
+        return prenom;
     }
 
-    public void setPremon(String premon)
+    public void setPrenom(String premon)
     {
-        this.premon = premon;
+        this.prenom = prenom;
     }
 
     public String getMdp()
@@ -175,12 +174,12 @@ public class UserData {
         this.notif = notif;
     }
 
-    public Integer getAbo()
+    public String getAbo()
     {
         return abo;
     }
 
-    public void setAbo(Integer abo)
+    public void setAbo(String abo)
     {
         this.abo = abo;
     }

@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/navigation_displayOffers"
-        android:name="com.mobile.inter_im.ui.displayOffers.DisplayOffersFragment"
+        android:name="com.mobile.inter_im.ui.search.DisplayOffersFragment"
         android:label="DisplayOffers"
         tools:layout="@layout/fragment_display_offers">
         <argument
