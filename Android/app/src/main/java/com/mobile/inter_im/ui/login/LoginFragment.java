@@ -19,12 +19,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.mobile.inter_im.MainActivity;
 import com.mobile.inter_im.R;
 import com.mobile.inter_im.databinding.FragmentLoginBinding;
+import com.mobile.inter_im.model.UserData;
 import com.mobile.inter_im.ui.home.HomeFragment;
+import com.mobile.inter_im.ui.profil.ProfilFragment;
 import com.mobile.inter_im.user.UserViewModel;
 
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
+    private MainActivity mainActivity;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState)
@@ -41,6 +44,7 @@ public class LoginFragment extends Fragment {
         loginViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         Button buttonLogin = root.findViewById(R.id.button_login);
+        Button buttonRegister = root.findViewById(R.id.button_register);
         TextInputLayout mailEditLayout = root.findViewById(R.id.textField_menu);
         TextInputLayout mdpEditLayout = root.findViewById(R.id.textField2_menu);
 
@@ -55,12 +59,20 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragment(new SigninFragment());
+            }
+        });
+
         loginViewModel.getSnackbarMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String message) {
                 Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show();
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.replaceFragment(new HomeFragment());
+                mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragment(new ProfilFragment());
             }
         });
 
@@ -68,7 +80,8 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
+    public void onDestroyView()
+    {
         super.onDestroyView();
         binding = null;
     }

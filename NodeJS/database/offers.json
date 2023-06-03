@@ -1,11 +1,33 @@
 [
   {
-    "nom": "Serveur",
+    "nom": "Serveur H/F",
     "etat": "60a463dc41e08f002150ec19",
     "duree": 30,
     "secteur": "restauration",
-    "descr": "Nous recherchons un serveur pour travailler dans notre restaurant. Le poste est à pourvoir immédiatement pour une durée de 1 mois. Le candidat doit être motivé et dynamique.",
+    "descr": "Nous recherchons un serveur pour travailler dans notre restaurant. Le poste est à pourvoir immédiatement pour une durée de 30 mois. Le candidat doit être motivé et dynamique.",
     "salaire": 10,
+    "date": 20230701,
+    "candidatures": [],
+    "ville": "Montpellier"
+  },
+  {
+    "nom": "Commis de cuisine H/F",
+    "etat": "60a463dc41e08f002150ec19",
+    "duree": 10,
+    "secteur": "restauration",
+    "descr": "Nous recherchons un commis de cuisine motivé.e. Pour plus d'informations, merci de passer nous voir !",
+    "salaire": 10,
+    "date": 20230701,
+    "candidatures": [],
+    "ville": "Montpellier"
+  },
+  {
+    "nom": "Plongeur H/F",
+    "etat": "60a463dc41e08f002150ec19",
+    "duree": 30,
+    "secteur": "restauration",
+    "descr": "Vous avez de l'expérience en plonge dans les meilleurs restaurants ? Rejoignez nous pour un salaire à la hauteur de votre espérence.",
+    "salaire": 200,
     "date": 20230701,
     "candidatures": [],
     "ville": "Montpellier"

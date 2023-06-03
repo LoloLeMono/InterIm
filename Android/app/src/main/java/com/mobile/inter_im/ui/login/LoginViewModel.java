@@ -29,6 +29,7 @@ public class LoginViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
     private Context context;
     private final RetrofitInterface retrofitInterface;
+    public static UserData user;
 
     public void setContext(Context context) {
         this.context = context;
@@ -82,6 +83,35 @@ public class LoginViewModel extends ViewModel {
         });
     }
 
+    public void createUser() {
+
+        Call<ResultData> call = retrofitInterface.executeSignup(user);
+        call.enqueue(new Callback<ResultData>() {
+            @Override
+            public void onResponse(Call<ResultData> call, Response<ResultData> response) {
+                if (response.isSuccessful()) {
+                    ResultData result = response.body();
+                    if (result.getResultat() == 1) {
+
+                        System.out.println("RESULTAT : 1");
+                        System.out.println(user);
+
+                    }
+                    else {
+                        System.out.println("RESULTAT : 0");
+                    }
+                } else {
+                    System.out.println("Erreur response : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultData> call, Throwable t) {
+                System.out.println("Erreur failure : " + t.getMessage());
+            }
+        });
+    }
+
     public LiveData<String> getText() {
         return mText;
     }
@@ -115,5 +145,21 @@ public class LoginViewModel extends ViewModel {
 
 
         sharedPreferences.edit().putBoolean("isConnected", true).apply();
+    }
+
+    public void setUser(UserData u){
+        user = u;
+    }
+
+    public void setMdp(String mdp){
+        user.setMdp(mdp);
+    }
+
+    public void setAbo(String abo){
+        user.setAbo(abo);
+    }
+
+    public UserData getUser(){
+        return user;
     }
 }

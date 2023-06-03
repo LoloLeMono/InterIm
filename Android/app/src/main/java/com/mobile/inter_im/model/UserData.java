@@ -13,6 +13,17 @@ public class UserData {
         this.mdp = mdp;
     }
 
+    public UserData(String nom, String prenom, String mail, String tel, String nat, String adresse, String ville)
+    {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.tel = tel;
+        this.nat = nat;
+        this.adresse = adresse;
+        this.ville = ville;
+    }
+
     public UserData(String _id, String nom, String prenom, String mdp, String mail, String tel, String nat, String type, String adresse, String ville, String bio, String cv, String vitale, Boolean notif, String abo, List<String> autredoc, List<String> emplois)
     {
         this._id = _id;

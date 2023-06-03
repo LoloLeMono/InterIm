@@ -20,6 +20,6 @@ public interface RetrofitInterface {
     Call<UserData> executeLogin(@Body UserData user);
     @POST("/find-offers")
     Call<List<OfferData>> executeOffer(@Body OfferData offer);
-    @POST("signup")
-    Call<Void> executeSignup(@Body HashMap<String, String> map);
+    @POST("/signup")
+    Call<ResultData> executeSignup(@Body UserData user);
 }
