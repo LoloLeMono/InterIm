@@ -22,6 +22,13 @@ public class OfferData
         this.candidatures = candidatures;
     }
 
+    public OfferData(String nom, String descr, String ville)
+    {
+        this.nom = nom;
+        this.descr = descr;
+        this.ville = ville;
+    }
+
     public OfferData(long date, String secteur, String ville)
     {
         this.secteur = secteur;

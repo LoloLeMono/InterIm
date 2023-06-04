@@ -6,10 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.mobile.inter_im.MainActivity;
 import com.mobile.inter_im.R;
 import com.mobile.inter_im.model.OfferData;
+import com.mobile.inter_im.ui.login.LoginViewModel;
+import com.mobile.inter_im.ui.profil.ProfilFragment;
 
 import java.util.List;
 
@@ -24,6 +30,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OfferViewHolder> {
     @Override
     public OfferViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
         return new OfferViewHolder(inflater.inflate(R.layout.item_offer, parent, false));
     }
 
